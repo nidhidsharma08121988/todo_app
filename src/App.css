@@ -11,6 +11,7 @@
   --secondary-color-light: #282c35;
   --secondary-color-lighter: #363636;
   --secondary-color-lightest: #454b4b;
+  --light-color: lightgrey;
   --danger-color: red;
   --stuck-task: #780909;
   --completed-task: green;
@@ -47,6 +48,9 @@ body {
 .bl {
   border-left: 0.5px dotted var(--secondary-color-lightest);
 }
+.bb {
+  border-bottom: 0.5px dotted var(--secondary-color-lightest);
+}
 /* card */
 .card {
   margin: 2px;
@@ -70,7 +74,6 @@ body {
 .content {
   color: var(--secondary-color-light);
 }
-
 /* texts */
 .text-sm {
   font-size: 0.5rem;
@@ -156,6 +159,9 @@ body {
 i {
   color: white;
 }
+.i-l {
+  color: var(--light-color);
+}
 /* tasks based borders */
 .task-completed {
   border-left: 4px solid var(--completed-task);
@@ -165,6 +171,20 @@ i {
 }
 .task-stuck {
   border-left: 4px solid var(--stuck-task);
+}
+.sub-task-completed {
+  color: var(--completed-task);
+}
+.sub-task-ongoing {
+  color: var(--doing);
+}
+.sub-task-stuck {
+  color: var(--stuck-task);
+}
+/* ul which lists all tasks */
+.sub-tasks {
+  list-style: square;
+  color: var(--light-color);
 }
 /* links */
 a,

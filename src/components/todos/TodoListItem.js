@@ -1,5 +1,6 @@
 import React from 'react';
-import { ONGOING, STUCK, COMPLETED } from '../../context/types';
+import { STUCK, COMPLETED } from '../../context/types';
+import TodoTasks from './TodoTasks';
 
 const TodoListItem = ({ item }) => {
   console.log(item);
@@ -23,16 +24,23 @@ const TodoListItem = ({ item }) => {
       }`}
     >
       <div>
-        <h3 className='sub-heading'>{todo_title}</h3>
+        <h3 className='sub-heading bb my-1 py-1'>{todo_title}</h3>
       </div>
       <div className='flex-row space-between'>
         <div className='content'>
-          <p>{todo}</p>
+          <ul className='sub-tasks'>
+            {todo.map(task => (
+              <li key={task.id}>
+                <TodoTasks {...task} />
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className='flex-col bl m-1 p-1 my-1'>
+        <div className='flex-row bl m-1 p-1 my-1'>
           <>
+            {' '}
             <div className='flex-row'>
-              <i className='fa fa-calendar' style={{ color: 'steelblue' }}></i>
+              <i className='fa fa-calendar m-1 i-l'></i>
               <div className='inline-flex m-1'>
                 <div>{start_date.getDay().toString()}</div>
                 {'/'}
@@ -41,8 +49,9 @@ const TodoListItem = ({ item }) => {
                 <div>{start_date.getYear().toString()}</div>
               </div>
             </div>
+            {'-'}
             <div className='flex-row'>
-              <i className='fa fa-calendar' style={{ color: 'steelblue' }}></i>
+              <i className='fa fa-calendar m-1 i-l'></i>
               <div className='inline-flex m-1'>
                 <div>{finish_date.getDay().toString()}</div>
                 {'/'}

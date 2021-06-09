@@ -1,37 +1,60 @@
 import React, { useReducer } from 'react';
 import ListContext from './listContext';
 import listReducer from './listReducer';
-import { ONGOING, STUCK, COMPLETED } from '../types';
+import { ONGOING, STUCK, COMPLETED, WAIT_FOR_PREVIOUS } from '../types';
 const ListState = props => {
   const initialState = {
     list: [
       {
         id: 1,
         todo_title: 'Complete this app',
-        todo: 'describe what you want to do',
+        todo: [
+          { id: 11, task: 'Implement display list feature', status: COMPLETED },
+          { id: 12, task: 'Implement add to list feature', status: COMPLETED },
+          {
+            id: 13,
+            task: 'Implement delete list item feature',
+            status: ONGOING,
+          },
+          {
+            id: 14,
+            task: 'Implement edit list item feature',
+            status: WAIT_FOR_PREVIOUS,
+          },
+        ],
         start_date: new Date(2021, 5, 12, 14, 0, 0),
         finish_date: new Date(2021, 6, 21, 8, 0, 0, 0),
         started: true,
-        reminder: false,
         stage: ONGOING,
+        stuck: false,
       },
       {
         id: 2,
         todo_title: 'Complete honeypot test',
-        todo: 'describe what you want to do',
+        todo: [
+          { id: 21, task: 'Practice algorithms', status: COMPLETED },
+          { id: 22, task: 'Take practice test', status: COMPLETED },
+          { id: 23, task: 'Take test', status: COMPLETED },
+        ],
         start_date: new Date(2021, 4, 27, 14, 0, 0),
         finish_date: new Date(2021, 5, 21, 12, 0, 0, 0),
-        reminder: false,
+        started: true,
         stage: COMPLETED,
+        stuck: false,
       },
       {
         id: 3,
         todo_title: 'Complete logic test',
-        todo: 'describe what you want to do',
+        todo: [
+          { id: 21, task: 'Practice algorithms', status: COMPLETED },
+          { id: 22, task: 'Take practice test', status: COMPLETED },
+          { id: 23, task: 'Take test', status: STUCK },
+        ],
         start_date: new Date(2021, 6, 1, 14, 0, 0),
         finish_date: new Date(2021, 6, 21, 12, 0, 0, 0),
-        reminder: false,
+        started: false,
         stage: STUCK,
+        stuck: true,
       },
     ],
   };
