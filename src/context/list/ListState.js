@@ -8,7 +8,7 @@ const ListState = props => {
       {
         id: 1,
         todo_title: 'Complete this app',
-        todo: '1. Do this 2. do that 3. such',
+        todo: 'describe what you want to do',
         start_date: new Date(2021, 5, 12, 14, 0, 0),
         finish_date: new Date(2021, 6, 21, 8, 0, 0, 0),
         started: true,
@@ -18,7 +18,7 @@ const ListState = props => {
       {
         id: 2,
         todo_title: 'Complete honeypot test',
-        todo: '1. do this 2. do that',
+        todo: 'describe what you want to do',
         start_date: new Date(2021, 4, 27, 14, 0, 0),
         finish_date: new Date(2021, 5, 21, 12, 0, 0, 0),
         reminder: false,
@@ -27,7 +27,7 @@ const ListState = props => {
       {
         id: 3,
         todo_title: 'Complete logic test',
-        todo: '1. do this 2. do that',
+        todo: 'describe what you want to do',
         start_date: new Date(2021, 6, 1, 14, 0, 0),
         finish_date: new Date(2021, 6, 21, 12, 0, 0, 0),
         reminder: false,
