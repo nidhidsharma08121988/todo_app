@@ -55,6 +55,7 @@ body {
 .card {
   margin: 2px;
   border: 0.3px dotted darkgrey;
+  border-radius: 20px;
   box-shadow: 1px 2px 3px darkgrey;
   max-width: 100%;
   width: 700px;
@@ -145,6 +146,7 @@ body {
   box-shadow: 1px 2px 3px var(--primary-color-darker);
   background-color: var(--primary-color-darkest);
   color: white;
+  width: 100vw;
 }
 .navbar ul {
   list-style: none;
@@ -183,8 +185,12 @@ i {
 }
 /* ul which lists all tasks */
 .sub-tasks {
-  list-style: square;
+  list-style: none;
+  padding-left: 0px;
   color: var(--light-color);
+}
+.sub-task {
+  border-radius: 20px;
 }
 /* links */
 a,
@@ -215,4 +221,34 @@ Link:hover {
 }
 .space-between {
   justify-content: space-between;
+}
+/* mobile styles settings */
+@media (max-width: 700px) {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 10px;
+    scroll-behavior: auto;
+    width: 100vw;
+    height: 100vh;
+  }
+  .container {
+    width: 100vw;
+  }
+  .sub-container {
+    width: 95vw;
+  }
+  .card {
+    width: 100%;
+  }
+  .task-dates {
+    display: flex;
+    flex-direction: column;
+  }
+  .dates {
+    border-left: none;
+    padding-top: 0.5rem;
+    border-top: 0.5px dotted var(--secondary-color-lightest);
+  }
 }

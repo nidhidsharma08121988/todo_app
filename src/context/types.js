@@ -2,7 +2,7 @@
 export const ONGOING = 'ONGOING';
 export const STUCK = 'STUCK';
 export const COMPLETED = 'COMPLETED';
-export const WAIT_FOR_PREVIOUS = 'WAIT_FOR_PREVIOUS';
+export const WAITING = 'WAITING';
 //TASK CONTEXT
 export const ADD_TO_DO = 'ADD_TO_DO';
 export const DELETE_TO_DO = 'DELETE_TO_DO';

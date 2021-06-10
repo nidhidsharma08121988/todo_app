@@ -23,10 +23,17 @@ const TodoListItem = ({ item }) => {
           : 'task-ongoing'
       }`}
     >
-      <div>
-        <h3 className='sub-heading bb my-1 py-1'>{todo_title}</h3>
+      <div className='flex-row space-between bb'>
+        <div>
+          <h3 className='sub-heading my-1 py-1'>{todo_title}</h3>
+        </div>
+        <div>
+          {stage === COMPLETED && (
+            <i className='fa fa-check my-1 py-1' style={{ color: 'green' }} />
+          )}
+        </div>
       </div>
-      <div className='flex-row space-between'>
+      <div className='task-dates flex-row space-between'>
         <div className='content'>
           <ul className='sub-tasks'>
             {todo.map(task => (
@@ -36,9 +43,9 @@ const TodoListItem = ({ item }) => {
             ))}
           </ul>
         </div>
-        <div className='flex-row bl m-1 p-1 my-1'>
+        <div className='dates flex-row bl m-1 p-1 my-1'>
           <>
-            {' '}
+            {'Begun on '}
             <div className='flex-row'>
               <i className='fa fa-calendar m-1 i-l'></i>
               <div className='inline-flex m-1'>
@@ -49,7 +56,7 @@ const TodoListItem = ({ item }) => {
                 <div>{start_date.getYear().toString()}</div>
               </div>
             </div>
-            {'-'}
+            {'Due by'}
             <div className='flex-row'>
               <i className='fa fa-calendar m-1 i-l'></i>
               <div className='inline-flex m-1'>

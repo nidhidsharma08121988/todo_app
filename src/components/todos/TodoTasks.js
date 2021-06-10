@@ -2,11 +2,11 @@ import React from 'react';
 import { STUCK, COMPLETED } from '../../context/types';
 const TodoTasks = ({ id, task, status }) => {
   if (status === COMPLETED) {
-    return <span className='sub-task-completed'>{task}</span>;
+    return <div className='sub-task sub-task-completed my-1 p-1'>{task}</div>;
   } else if (status === STUCK) {
-    return <span className='sub-task-stuck'>{task}</span>;
+    return <div className='sub-task sub-task-stuck my-1 p-1'>{task}</div>;
   } else {
-    return <span className='sub-task-ongoing'>{task}</span>;
+    return <div className='sub-task sub-task-ongoing my-1 p-1'>{task}</div>;
   }
 };
 

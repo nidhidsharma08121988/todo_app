@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import ListContext from './listContext';
 import listReducer from './listReducer';
-import { ONGOING, STUCK, COMPLETED, WAIT_FOR_PREVIOUS } from '../types';
+import { ONGOING, STUCK, COMPLETED, WAITING } from '../types';
 const ListState = props => {
   const initialState = {
     list: [
@@ -19,7 +19,7 @@ const ListState = props => {
           {
             id: 14,
             task: 'Implement edit list item feature',
-            status: WAIT_FOR_PREVIOUS,
+            status: WAITING,
           },
         ],
         start_date: new Date(2021, 5, 12, 14, 0, 0),
@@ -62,6 +62,9 @@ const ListState = props => {
   //add to do list item
   //remove to do item
   //delete to do item
+  //add task item
+  //delete task item
+  //edit task item
   //add reminder
   //clear reminder
   //edit task
