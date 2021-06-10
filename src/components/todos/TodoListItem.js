@@ -1,6 +1,6 @@
 import React from 'react';
 import { STUCK, COMPLETED } from '../../context/types';
-import TodoTasks from './TodoTasks';
+import TodoTasks from '../tasks/TodoTasks';
 
 const TodoListItem = ({ item }) => {
   console.log(item);
@@ -49,22 +49,22 @@ const TodoListItem = ({ item }) => {
             <div className='flex-row'>
               <i className='fa fa-calendar m-1 i-l'></i>
               <div className='inline-flex m-1'>
-                <div>{start_date.getDay().toString()}</div>
+                <div>{start_date.getDate()}</div>
                 {'/'}
-                <div>{start_date.getMonth().toString()}</div>
+                <div>{start_date.getMonth()}</div>
                 {'/'}
-                <div>{start_date.getYear().toString()}</div>
+                <div>{start_date.getFullYear()}</div>
               </div>
             </div>
             {'Due by'}
             <div className='flex-row'>
               <i className='fa fa-calendar m-1 i-l'></i>
               <div className='inline-flex m-1'>
-                <div>{finish_date.getDay().toString()}</div>
+                <div>{finish_date.getDate()}</div>
                 {'/'}
-                <div>{finish_date.getMonth().toString()}</div>
+                <div>{finish_date.getMonth()}</div>
                 {'/'}
-                <div>{finish_date.getYear().toString()}</div>
+                <div>{finish_date.getFullYear()}</div>
               </div>
             </div>
           </>
