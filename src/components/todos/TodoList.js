@@ -5,12 +5,16 @@ import TodoListItem from './TodoListItem';
 const TodoList = () => {
   const listContext = useContext(ListContext);
   const { list } = listContext;
+  console.log(list);
   return (
     <>
       <ul>
-        {list.map(listItem => (
-          <TodoListItem item={listItem} key={listItem.id} />
-        ))}
+        {list.length > 0 &&
+          list.map(listItem => (
+            <li key={listItem.id}>
+              <TodoListItem item={listItem} />
+            </li>
+          ))}
       </ul>
     </>
   );

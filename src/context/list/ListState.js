@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import ListContext from './listContext';
 import listReducer from './listReducer';
-import { ONGOING, STUCK, COMPLETED, WAITING } from '../types';
+import { ONGOING, STUCK, COMPLETED, NOT_STARTED, ADD_TO_DO } from '../types';
 const ListState = props => {
   const initialState = {
     list: [
@@ -19,12 +19,11 @@ const ListState = props => {
           {
             id: 14,
             task: 'Implement edit list item feature',
-            status: WAITING,
+            status: NOT_STARTED,
           },
         ],
         start_date: new Date('2021-05-18'),
         finish_date: new Date('2021-06-21'),
-        started: true,
         stage: ONGOING,
         stuck: false,
       },
@@ -38,7 +37,6 @@ const ListState = props => {
         ],
         start_date: new Date('2021-4-27'),
         finish_date: new Date('2021-5-21'),
-        started: true,
         stage: COMPLETED,
         stuck: false,
       },
@@ -52,7 +50,6 @@ const ListState = props => {
         ],
         start_date: new Date('2021-6-1'),
         finish_date: new Date('2021-6-21'),
-        started: false,
         stage: STUCK,
         stuck: true,
       },
@@ -60,11 +57,14 @@ const ListState = props => {
   };
   //actions
   //add to do list item
+  const addTodoItem = todoListItem => {
+    dispatch({
+      type: ADD_TO_DO,
+      payload: todoListItem,
+    });
+  };
   //remove to do item
   //delete to do item
-  //add task item
-  //delete task item
-  //edit task item
   //add reminder
   //clear reminder
   //edit task
@@ -74,6 +74,7 @@ const ListState = props => {
     <ListContext.Provider
       value={{
         list: state.list,
+        addTodoItem,
       }}
     >
       {props.children}
