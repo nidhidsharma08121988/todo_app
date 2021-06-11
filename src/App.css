@@ -65,25 +65,6 @@ body {
   display: inline-flex;
 }
 
-/* tasks based borders */
-.task-completed {
-  border-left: 4px solid var(--completed-task);
-}
-.task-ongoing {
-  border-left: 4px solid var(--doing);
-}
-.task-stuck {
-  border-left: 4px solid var(--stuck-task);
-}
-.sub-task-completed {
-  color: var(--completed-task);
-}
-.sub-task-ongoing {
-  color: var(--doing);
-}
-.sub-task-stuck {
-  color: var(--stuck-task);
-}
 /* ul which lists all tasks */
 ul {
   list-style: none;
@@ -98,6 +79,7 @@ ul {
 .sub-task {
   border-radius: 20px;
 }
+
 /* links */
 a,
 Link {
@@ -145,10 +127,11 @@ Link:hover {
 }
 
 .add-btn {
-  display: inline-flex;
   background-color: var(--primary-color-darkest);
   color: white;
-  border-radius: 3px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   box-shadow: 3px 3px 8px var(--light-color);
 }
 
@@ -276,10 +259,10 @@ Link:hover {
   width: 100%;
 }
 textarea {
-  height: 200px;
+  height: 100px;
   width: 100%;
   max-width: 100%;
-  max-height: 200px;
+  max-height: 100px;
   scroll-behavior: auto;
   resize: none;
 }
@@ -306,6 +289,27 @@ textarea {
   flex-direction: column;
   background-color: var(--primary-bg);
 }
+
+/* tasks based borders - these must be added after card to override its priority */
+.task-completed {
+  border-left: 4px solid var(--completed-task);
+}
+.task-ongoing {
+  border-left: 4px solid var(--doing);
+}
+.task-stuck {
+  border-left: 4px solid var(--stuck-task);
+}
+.sub-task-completed {
+  color: var(--completed-task);
+}
+.sub-task-ongoing {
+  color: var(--doing);
+}
+.sub-task-stuck {
+  color: var(--stuck-task);
+}
+
 /* heading */
 .heading {
   color: var(--primary-color-darkest);

@@ -4,7 +4,7 @@ import { NOT_STARTED } from '../../context/types';
 import ListContext from '../../context/list/listContext';
 
 // add the todo item
-const AddTodoForm = () => {
+const AddTodoForm = props => {
   const [todoTitle, setTodoTitle] = useState('');
   const [todoList, setTodoList] = useState('');
   const [startDate, setStartDate] = useState(Date.now());
@@ -64,6 +64,11 @@ const AddTodoForm = () => {
 
     //clear the form
     clearForm();
+
+    alert('Task added');
+
+    //****redirect to home page****
+    props.history.push('/');
   };
 
   const clearForm = () => {
@@ -90,7 +95,7 @@ const AddTodoForm = () => {
               name='todoTitle'
               value={todoTitle}
               onChange={onChange}
-              isRequired
+              required
             />
           </div>
           <div className='form-control flex-col'>
