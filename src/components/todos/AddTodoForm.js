@@ -90,7 +90,7 @@ const AddTodoForm = props => {
             <input
               id='todoTitle'
               type='text'
-              className='text-l input'
+              className='text-l input light-smooth'
               placeholder='Enter title'
               name='todoTitle'
               value={todoTitle}
@@ -102,7 +102,7 @@ const AddTodoForm = props => {
             <label htmlFor='todoList'>Sub tasks</label>
             <textarea
               id='todoList'
-              className='input'
+              className='input light-smooth'
               placeholder='Enter tasks in comma separated list'
               name='todoList'
               value={todoList}
@@ -112,7 +112,7 @@ const AddTodoForm = props => {
           <div className='form-control flex-col'>
             <label htmlFor='startDate'>Start Date</label>
             <input
-              className='input'
+              className='input light-smooth'
               id='startDate'
               type='date'
               name='startDate'
@@ -124,7 +124,7 @@ const AddTodoForm = props => {
             <label htmlFor='finishDate'>Due on</label>
             <input
               id='finishDate'
-              className='input'
+              className='input light-smooth'
               type='date'
               name='finishDate'
               value={finishDate}
@@ -132,14 +132,17 @@ const AddTodoForm = props => {
             />
           </div>
         </div>
-        <div className='flex-row center'>
+        <div className='flex-row center my-1'>
           <input
-            className='btn btn-sm btn-dark'
+            className='btn btn-sm btn-dark light-smooth'
             type='submit'
             value='Add Task'
           />
           <Link to='/'>
-            <button className='btn btn-sm btn-danger' onClick={clearForm}>
+            <button
+              className='btn btn-sm btn-danger light-smooth'
+              onClick={clearForm}
+            >
               Cancel
             </button>
           </Link>

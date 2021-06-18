@@ -1,7 +1,14 @@
 import React, { useReducer } from 'react';
 import ListContext from './listContext';
 import listReducer from './listReducer';
-import { ONGOING, STUCK, COMPLETED, NOT_STARTED, ADD_TO_DO } from '../types';
+import {
+  ONGOING,
+  STUCK,
+  COMPLETED,
+  NOT_STARTED,
+  ADD_TO_DO,
+  DELETE_TO_DO,
+} from '../types';
 const ListState = props => {
   const initialState = {
     list: [
@@ -63,10 +70,15 @@ const ListState = props => {
       payload: todoListItem,
     });
   };
-  //remove to do item
-  //delete to do item
-  //add reminder
-  //clear reminder
+
+  //delete to do
+  const deleteToDoItem = id => {
+    dispatch({
+      type: DELETE_TO_DO,
+      payload: id,
+    });
+  };
+
   //edit task
 
   const [state, dispatch] = useReducer(listReducer, initialState);
@@ -75,6 +87,7 @@ const ListState = props => {
       value={{
         list: state.list,
         addTodoItem,
+        deleteToDoItem,
       }}
     >
       {props.children}

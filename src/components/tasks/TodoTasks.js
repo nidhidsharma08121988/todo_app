@@ -7,8 +7,10 @@ const TodoTasks = ({ id, task = '', status = ONGOING }) => {
     return <div className='sub-task sub-task-completed my-1 p-1'>{task}</div>;
   } else if (status === STUCK) {
     return <div className='sub-task sub-task-stuck my-1 p-1'>{task}</div>;
-  } else {
+  } else if (status === ONGOING) {
     return <div className='sub-task sub-task-ongoing my-1 p-1'>{task}</div>;
+  } else {
+    return <div className='sub-task sub-task-not-started my-1 p-1'>{task}</div>;
   }
 };
 

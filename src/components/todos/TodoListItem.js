@@ -1,28 +1,35 @@
-import React from 'react';
-import { STUCK, COMPLETED } from '../../context/types';
+import React, { useContext } from 'react';
+import { COMPLETED } from '../../context/types';
+import ListContext from '../../context/list/listContext';
 import TodoTasks from '../tasks/TodoTasks';
 import PropTypes from 'prop-types';
 
 const TodoListItem = ({ item }) => {
-  const { todo_title, todo, start_date, finish_date, stage } = item;
+  const { id, todo_title, todo, start_date, finish_date, stage } = item;
+  const listContext = useContext(ListContext);
+  const { deleteToDoItem } = listContext;
+  const deleteThisItem = () => {
+    deleteToDoItem(id);
+  };
   return (
-    <div
-      className={`card my-1 p-2 ${
-        stage === COMPLETED
-          ? 'task-completed'
-          : stage === STUCK
-          ? 'task-stuck'
-          : 'task-ongoing'
-      }`}
-    >
+    <div className='card my-1 p-2'>
       <div className='flex-row space-between bb'>
-        <div>
-          <h3 className='sub-heading my-1 py-1'>{todo_title}</h3>
-        </div>
-        <div>
+        <div className='flex-row'>
           {stage === COMPLETED && (
             <i className='fa fa-check my-1 py-1' style={{ color: 'green' }} />
           )}
+          <h3 className='sub-heading my-1 py-1 m-1'>{todo_title}</h3>
+        </div>
+        <div className='ctr-btn'>
+          <button className='btn btn-sm btn-dark my-1 py-1 light-smooth'>
+            <i className='fa fa-edit' />
+          </button>
+          <button
+            className='btn btn-sm btn-danger my-1 py-1 light-smooth'
+            onClick={deleteThisItem}
+          >
+            <i className='fa fa-trash' />
+          </button>
         </div>
       </div>
       <div className='task-dates flex-row space-between'>
@@ -36,10 +43,10 @@ const TodoListItem = ({ item }) => {
               ))}
           </ul>
         </div>
-        <div className='dates flex-row bl m-1 p-1 my-1'>
+        <div className='dates flex-col bl m-1 p-1 my-1'>
           <>
             {'Begun on '}
-            <div className='flex-row'>
+            <div className='flex-row my-1'>
               <i className='fa fa-calendar m-1 i-l'></i>
               <div className='inline-flex m-1'>
                 <div>{start_date.getDate()}</div>
@@ -51,7 +58,7 @@ const TodoListItem = ({ item }) => {
             </div>
             {'Due by'}
             {finish_date ? (
-              <div className='flex-row'>
+              <div className='flex-row my-1'>
                 <i className='fa fa-calendar m-1 i-l'></i>
                 <div className='inline-flex m-1'>
                   <div>{finish_date.getDate()}</div>/
