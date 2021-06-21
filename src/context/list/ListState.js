@@ -1,14 +1,7 @@
 import React, { useReducer } from 'react';
 import ListContext from './listContext';
 import listReducer from './listReducer';
-import {
-  ONGOING,
-  STUCK,
-  COMPLETED,
-  NOT_STARTED,
-  ADD_TO_DO,
-  DELETE_TO_DO,
-} from '../types';
+import { ADD_TO_DO, DELETE_TO_DO } from '../types';
 const ListState = props => {
   const initialState = {
     list: [
@@ -16,49 +9,41 @@ const ListState = props => {
         id: 1,
         todo_title: 'Complete this app',
         todo: [
-          { id: 11, task: 'Implement display list feature', status: COMPLETED },
-          { id: 12, task: 'Implement add to list feature', status: COMPLETED },
+          { id: 11, task: 'Implement display list feature' },
+          { id: 12, task: 'Implement add to list feature' },
           {
             id: 13,
             task: 'Implement delete list item feature',
-            status: ONGOING,
           },
           {
             id: 14,
             task: 'Implement edit list item feature',
-            status: NOT_STARTED,
           },
         ],
-        start_date: new Date('2021-05-18'),
-        finish_date: new Date('2021-06-21'),
-        stage: ONGOING,
-        stuck: false,
+        start_date: '2021-05-18',
+        todo_labels: ['completed', 'fast'],
       },
       {
         id: 2,
         todo_title: 'Complete honeypot test',
         todo: [
-          { id: 21, task: 'Practice algorithms', status: COMPLETED },
-          { id: 22, task: 'Take practice test', status: COMPLETED },
-          { id: 23, task: 'Take test', status: COMPLETED },
+          { id: 21, task: 'Practice algorithms' },
+          { id: 22, task: 'Take practice test' },
+          { id: 23, task: 'Take test' },
         ],
-        start_date: new Date('2021-4-27'),
-        finish_date: new Date('2021-5-21'),
-        stage: COMPLETED,
-        stuck: false,
+        start_date: '2021-04-27',
+        todo_labels: ['completed', 'successfully'],
       },
       {
         id: 3,
         todo_title: 'Complete logic test',
         todo: [
-          { id: 21, task: 'Practice algorithms', status: COMPLETED },
-          { id: 22, task: 'Take practice test', status: COMPLETED },
-          { id: 23, task: 'Take test', status: STUCK },
+          { id: 21, task: 'Practice algorithms' },
+          { id: 22, task: 'Take practice test' },
+          { id: 23, task: 'Take test' },
         ],
-        start_date: new Date('2021-6-1'),
-        finish_date: new Date('2021-6-21'),
-        stage: STUCK,
-        stuck: true,
+        start_date: '2021-06-1',
+        todo_labels: ['completed', 'successful', 'waiting for result'],
       },
     ],
   };

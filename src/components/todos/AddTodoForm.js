@@ -1,15 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { NOT_STARTED } from '../../context/types';
+import { Link, useHistory } from 'react-router-dom';
 import ListContext from '../../context/list/listContext';
 
 // add the todo item
-const AddTodoForm = props => {
+const AddTodoForm = () => {
   const [todoTitle, setTodoTitle] = useState('');
   const [todoList, setTodoList] = useState('');
-  const [startDate, setStartDate] = useState(Date.now());
-  const [finishDate, setFinishDate] = useState(Date.now());
+  const startDate = new Date(Date.now());
+  const [labels, setLabels] = useState('');
   const listContext = useContext(ListContext);
+
+  // useHistory hook for page redirect
+  // no need of props with this hook
+  const history = useHistory();
 
   const onChange = e => {
     switch (e.target.name) {
@@ -19,11 +22,8 @@ const AddTodoForm = props => {
       case 'todoList':
         setTodoList(e.target.value);
         break;
-      case 'startDate':
-        setStartDate(e.target.value);
-        break;
-      case 'finishDate':
-        setFinishDate(e.target.value);
+      case 'todo_labels':
+        setLabels(e.target.value);
         break;
       default:
         break;
@@ -31,32 +31,44 @@ const AddTodoForm = props => {
   };
   const submitForm = e => {
     e.preventDefault();
+
+    // handle subtasks
     const todoTask = todoList.split(',');
     const todoTaskList = [];
-    //push sub tasks in the todo task list
     for (let i = 0; i < todoTask.length; i++) {
       //if task is empty then skip this iteration
-      if (todoTask[i].trim() === '') {
-        continue;
-      }
+      if (todoTask[i].trim() === '') continue;
       let taskId = Math.floor(Math.random() * 20) + 1;
       let obj = {
         id: taskId,
         task: todoTask[i],
-        status: NOT_STARTED,
       };
       todoTaskList.push(obj);
     }
+
+    // handle labels
+    let final_labels = [];
+    let myLabels = labels.split(',');
+    for (let i = 0; i < myLabels.length; i++) {
+      if (myLabels[i].trim() === '') continue;
+      final_labels.push(myLabels[i]);
+    }
+
+    // convert date to string
+    const myDate =
+      startDate.getFullYear().toString() +
+      '-' +
+      startDate.getMonth().toString() +
+      '-' +
+      startDate.getDate().toString();
     //create object of the list item
     const todoId = Math.floor(Math.random() * 50) + 1;
     const todoItem = {
       id: todoId,
       todo_title: todoTitle,
       todo: todoTaskList,
-      start_date: new Date(startDate),
-      finish_date: new Date(finishDate),
-      stage: NOT_STARTED,
-      stuck: false,
+      start_date: myDate,
+      todo_labels: final_labels,
     };
     //call add todo in the list
     listContext.addTodoItem(todoItem);
@@ -68,29 +80,27 @@ const AddTodoForm = props => {
     alert('Task added');
 
     //****redirect to home page****
-    props.history.push('/');
+    history.push('/');
   };
 
   const clearForm = () => {
     setTodoTitle('');
     setTodoList('');
-    setStartDate(Date.now());
-    setFinishDate(Date.now());
   };
 
   return (
     <div className='form-container'>
       <div className='flex-row center'>
-        <h2>Add New task</h2>
+        <h2>Add New Task</h2>
       </div>
       <form onSubmit={submitForm}>
         <div className='form-controls'>
           <div className='form-control flex-col'>
-            <label htmlFor='todoTitle'>Task Name</label>
+            <label htmlFor='todoTitle'>Task name</label>
             <input
               id='todoTitle'
               type='text'
-              className='text-l input light-smooth'
+              className='text-l input'
               placeholder='Enter title'
               name='todoTitle'
               value={todoTitle}
@@ -102,36 +112,25 @@ const AddTodoForm = props => {
             <label htmlFor='todoList'>Sub tasks</label>
             <textarea
               id='todoList'
-              className='input light-smooth'
+              className='input'
               placeholder='Enter tasks in comma separated list'
               name='todoList'
               value={todoList}
               onChange={onChange}
             />
           </div>
-          <div className='form-control flex-col'>
-            <label htmlFor='startDate'>Start Date</label>
-            <input
-              className='input light-smooth'
-              id='startDate'
-              type='date'
-              name='startDate'
-              value={startDate}
-              onChange={onChange}
-            />
-          </div>
-          <div className='form-control flex-col'>
-            <label htmlFor='finishDate'>Due on</label>
-            <input
-              id='finishDate'
-              className='input light-smooth'
-              type='date'
-              name='finishDate'
-              value={finishDate}
-              onChange={onChange}
-            />
-          </div>
+          {/* labels */}
+          <label htmlfor='todo_labels'>Add tags</label>
+          <textarea
+            className='input'
+            name='todo_labels'
+            id='todo_labels'
+            value={labels}
+            placeholder='Enter comma separated list of labels'
+            onChange={onChange}
+          />
         </div>
+        {/* buttons */}
         <div className='flex-row center my-1'>
           <input
             className='btn btn-sm btn-dark light-smooth'
@@ -139,10 +138,7 @@ const AddTodoForm = props => {
             value='Add Task'
           />
           <Link to='/'>
-            <button
-              className='btn btn-sm btn-danger light-smooth'
-              onClick={clearForm}
-            >
+            <button className='btn btn-sm btn-danger light-smooth'>
               Cancel
             </button>
           </Link>

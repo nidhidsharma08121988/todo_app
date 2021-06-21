@@ -53,7 +53,15 @@ body {
   justify-content: center;
   align-items: top;
 }
-
+/* display labels */
+.lbl-disp {
+  background-color: var(--secondary-color-lightest);
+  color: white;
+  display: inline-flex;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+}
 /* Navbar */
 .navbar {
   display: flex;
@@ -85,11 +93,19 @@ ul {
   list-style: none;
   padding-left: 0px;
   color: var(--light-color);
+  width: 100%;
 }
 .sub-task {
-  border-radius: 4px;
   color: var(--secondary-color);
-  box-shadow: 1px 1px 1px var(--light-color);
+  width: 100%;
+}
+/* edit form related css */
+
+.stage-selection-todo {
+  display: flex;
+  justify-content: center;
+  border: 1px dotted var(--light-color);
+  font-size: 0.7rem;
 }
 
 /* links */
@@ -340,6 +356,7 @@ textarea {
 .content {
   color: var(--secondary-color-light);
 }
+
 /* texts */
 .text-xs {
   font-size: 0.3rem;

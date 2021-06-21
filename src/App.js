@@ -5,7 +5,7 @@ import Home from './components/pages/Home';
 import About from './components/pages/About';
 import ListState from './context/list/ListState';
 import AddTodoForm from './components/todos/AddTodoForm';
-
+import EditTodoForm from './components/todos/EditTodoForm';
 function App() {
   return (
     <ListState>
@@ -17,6 +17,7 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
               <Route exact path='/addTodo' component={AddTodoForm} />
+              <Route exact path='/editTodo' component={EditTodoForm} />
             </Switch>
           </div>
         </div>
