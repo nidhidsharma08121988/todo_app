@@ -83,6 +83,14 @@ body {
   display: inline-flex;
 }
 
+/* alert container */
+.alert-container {
+  width: 100%;
+  position: relative;
+  top: 70px;
+  text-align: center;
+}
+
 /* ul which lists all tasks */
 ul {
   list-style: none;

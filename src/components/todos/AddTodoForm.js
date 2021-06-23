@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ListContext from '../../context/list/listContext';
-
+import AlertContext from '../../context/alert/alertContext';
 // add the todo item
 const AddTodoForm = () => {
   const [todoTitle, setTodoTitle] = useState('');
@@ -9,6 +9,8 @@ const AddTodoForm = () => {
   const startDate = new Date(Date.now());
   const [labels, setLabels] = useState('');
   const listContext = useContext(ListContext);
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
 
   // useHistory hook for page redirect
   // no need of props with this hook
@@ -46,7 +48,7 @@ const AddTodoForm = () => {
 
     // handle labels
     let final_labels = [];
-    let myLabels = labels.split(',');
+    let myLabels = labels.split('#');
     for (let i = 0; i < myLabels.length; i++) {
       if (myLabels[i].trim() === '') continue;
       final_labels.push(myLabels[i]);
@@ -77,7 +79,7 @@ const AddTodoForm = () => {
     //clear the form
     clearForm();
 
-    alert('Task added');
+    setAlert('Task added');
 
     //****redirect to home page****
     history.push('/');
@@ -126,7 +128,7 @@ const AddTodoForm = () => {
             name='todo_labels'
             id='todo_labels'
             value={labels}
-            placeholder='Enter comma separated list of labels'
+            placeholder='Enter labels beginning with #'
             onChange={onChange}
           />
         </div>

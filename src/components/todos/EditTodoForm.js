@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useParams } from 'react-router';
 import ListContext from '../../context/list/listContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const EditTodoForm = () => {
   const { todoItemId } = useParams();
@@ -11,6 +12,9 @@ const EditTodoForm = () => {
   const [labels, setLabels] = useState('');
   const listContext = useContext(ListContext);
   const { list, editTodoItem } = listContext;
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
+
   const history = useHistory();
   //find the list itme with id from list in list context
   const findItem = () => {
@@ -105,6 +109,9 @@ const EditTodoForm = () => {
 
     //call edittodoitem method
     editTodoItem(updatedTodoItem);
+
+    //set alert
+    setAlert('Changes saved');
 
     //redirect to home
     history.push('/');

@@ -4,3 +4,6 @@ export const DELETE_TO_DO = 'DELETE_TO_DO';
 export const ADD_REMINDER = 'ADD_REMINDER';
 export const CLEAR_REMINDER = 'CLEAR_REMINDER';
 export const EDIT_TO_DO = 'EDIT_TO_DO';
+
+// ALERT CONTEXT
+export const SET_ALERT = 'SET_ALERT';
