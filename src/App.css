@@ -55,8 +55,6 @@ body {
 }
 /* display labels */
 .lbl-disp {
-  background-color: var(--secondary-color-lightest);
-  color: white;
   display: inline-flex;
   border-radius: 10px;
   text-align: center;
@@ -81,14 +79,6 @@ body {
 }
 .left-navbar {
   display: inline-flex;
-}
-
-/* alert container */
-.alert-container {
-  width: 100%;
-  position: relative;
-  top: 70px;
-  text-align: center;
 }
 
 /* ul which lists all tasks */
@@ -201,13 +191,6 @@ Link:hover {
   color: #333;
   border-radius: 5px;
 }
-.alert {
-  padding: 0.7rem;
-  margin: 1rem 0;
-  opacity: 0.9;
-  background-color: var(--light-color);
-  color: #333;
-}
 
 .btn-primary,
 .bg-primary,
@@ -267,6 +250,21 @@ Link:hover {
   border: #ccc solid 1px;
 }
 
+/* alert container */
+.alert-container {
+  width: 100%;
+  position: relative;
+  top: 70px;
+  text-align: center;
+}
+
+.alert {
+  padding: 0.7rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background-color: var(--light-color);
+  color: #333;
+}
 /* form */
 .form-container {
   display: flex;

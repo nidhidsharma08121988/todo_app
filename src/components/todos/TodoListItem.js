@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import ListContext from '../../context/list/listContext';
+import AlertContext from '../../context/alert/alertContext';
 import TodoTasks from '../tasks/TodoTasks';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -8,9 +9,12 @@ const TodoListItem = ({ item }) => {
   const { id, todo_title, todo, start_date, todo_labels } = item;
   const listContext = useContext(ListContext);
   const { deleteToDoItem } = listContext;
+  const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
   // when delete is clicked
   const deleteThisItem = () => {
     deleteToDoItem(id);
+    setAlert('Item deleted');
   };
   // when edit button is clicked redirect to edit form
 
@@ -58,7 +62,7 @@ const TodoListItem = ({ item }) => {
       <div className='flex-row'>
         {todo_labels.length > 0 &&
           todo_labels.map(label => (
-            <span className='lbl-disp m-1 my-1 p-1'>{label}</span>
+            <span className='lbl-disp badge-light m-1 my-1 p-1'>{label}</span>
           ))}
       </div>
     </div>
