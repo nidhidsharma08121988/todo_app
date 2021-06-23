@@ -38,9 +38,7 @@ const AddTodoForm = () => {
     for (let i = 0; i < todoTask.length; i++) {
       //if task is empty then skip this iteration
       if (todoTask[i].trim() === '') continue;
-      let taskId = Math.floor(Math.random() * 20) + 1;
       let obj = {
-        id: taskId,
         task: todoTask[i],
       };
       todoTaskList.push(obj);
@@ -61,6 +59,7 @@ const AddTodoForm = () => {
       startDate.getMonth().toString() +
       '-' +
       startDate.getDate().toString();
+
     //create object of the list item
     const todoId = Math.floor(Math.random() * 50) + 1;
     const todoItem = {
@@ -70,9 +69,10 @@ const AddTodoForm = () => {
       start_date: myDate,
       todo_labels: final_labels,
     };
+
     //call add todo in the list
     listContext.addTodoItem(todoItem);
-    //remaining: set alert that the item is added
+    //remaining: ** set alert that the item is added
 
     //clear the form
     clearForm();

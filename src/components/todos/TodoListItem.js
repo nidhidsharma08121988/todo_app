@@ -2,12 +2,9 @@ import React, { useContext } from 'react';
 import ListContext from '../../context/list/listContext';
 import TodoTasks from '../tasks/TodoTasks';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const TodoListItem = ({ item }) => {
-  // hook for using props.history for redirect
-  let history = useHistory();
-
   const { id, todo_title, todo, start_date, todo_labels } = item;
   const listContext = useContext(ListContext);
   const { deleteToDoItem } = listContext;
@@ -16,15 +13,7 @@ const TodoListItem = ({ item }) => {
     deleteToDoItem(id);
   };
   // when edit button is clicked redirect to edit form
-  const onEdit = () => {
-    // directly call history hook rather than props.history
-    history.push({
-      pathname: '/editTodo',
-      state: {
-        todo: item,
-      },
-    });
-  };
+
   return (
     <div className='card my-1 p-2'>
       <div className='flex-row space-between bb'>
@@ -32,12 +21,11 @@ const TodoListItem = ({ item }) => {
           <h3 className='sub-heading my-1 py-1 m-1'>{todo_title}</h3>
         </div>
         <div className='ctr-btn'>
-          <button
-            className='btn btn-sm btn-dark my-1 py-1 light-smooth'
-            onClick={onEdit}
-          >
-            <i className='fa fa-edit' />
-          </button>
+          <Link to={`/editTodo/${item.id}`}>
+            <button className='btn btn-sm btn-dark my-1 py-1 light-smooth'>
+              <i className='fa fa-edit' />
+            </button>
+          </Link>
           <button
             className='btn btn-sm btn-danger my-1 py-1 light-smooth'
             onClick={deleteThisItem}
@@ -51,8 +39,8 @@ const TodoListItem = ({ item }) => {
           <ul className='sub-tasks'>
             {todo.length > 0 &&
               todo.map(task => (
-                <li key={task.id}>
-                  <TodoTasks {...task} />
+                <li>
+                  <TodoTasks task={task.task} />
                 </li>
               ))}
           </ul>

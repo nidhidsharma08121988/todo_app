@@ -17,7 +17,11 @@ function App() {
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
               <Route exact path='/addTodo' component={AddTodoForm} />
-              <Route exact path='/editTodo' component={EditTodoForm} />
+              <Route
+                exact
+                path='/editTodo/:todoItemId'
+                component={EditTodoForm}
+              />
             </Switch>
           </div>
         </div>

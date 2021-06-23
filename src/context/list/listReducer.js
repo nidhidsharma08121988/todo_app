@@ -1,4 +1,4 @@
-import { ADD_TO_DO, DELETE_TO_DO } from '../types';
+import { ADD_TO_DO, DELETE_TO_DO, EDIT_TO_DO } from '../types';
 
 const listReducer = (state, action) => {
   switch (action.type) {
@@ -11,6 +11,14 @@ const listReducer = (state, action) => {
       return {
         ...state,
         list: state.list.filter(item => item.id !== action.payload),
+      };
+    case EDIT_TO_DO:
+      return {
+        ...state,
+        list: [
+          ...state.list.filter(item => item.id !== action.payload.id),
+          action.payload,
+        ],
       };
     default:
       return state;

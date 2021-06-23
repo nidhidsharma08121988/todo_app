@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TodoTasks = ({ id, task = '', task_labels }) => {
+const TodoTasks = ({ task = '' }) => {
   return <div className='sub-task my-1 p-1'>{task}</div>;
 };
 

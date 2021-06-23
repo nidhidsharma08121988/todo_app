@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import ListContext from './listContext';
 import listReducer from './listReducer';
-import { ADD_TO_DO, DELETE_TO_DO } from '../types';
+import { ADD_TO_DO, DELETE_TO_DO, EDIT_TO_DO } from '../types';
 const ListState = props => {
   const initialState = {
     list: [
@@ -9,14 +9,12 @@ const ListState = props => {
         id: 1,
         todo_title: 'Complete this app',
         todo: [
-          { id: 11, task: 'Implement display list feature' },
-          { id: 12, task: 'Implement add to list feature' },
+          { task: 'Implement display list feature' },
+          { task: 'Implement add to list feature' },
           {
-            id: 13,
             task: 'Implement delete list item feature',
           },
           {
-            id: 14,
             task: 'Implement edit list item feature',
           },
         ],
@@ -27,9 +25,9 @@ const ListState = props => {
         id: 2,
         todo_title: 'Complete honeypot test',
         todo: [
-          { id: 21, task: 'Practice algorithms' },
-          { id: 22, task: 'Take practice test' },
-          { id: 23, task: 'Take test' },
+          { task: 'Practice algorithms' },
+          { task: 'Take practice test' },
+          { task: 'Take test' },
         ],
         start_date: '2021-04-27',
         todo_labels: ['completed', 'successfully'],
@@ -38,9 +36,9 @@ const ListState = props => {
         id: 3,
         todo_title: 'Complete logic test',
         todo: [
-          { id: 21, task: 'Practice algorithms' },
-          { id: 22, task: 'Take practice test' },
-          { id: 23, task: 'Take test' },
+          { task: 'Practice algorithms' },
+          { task: 'Take practice test' },
+          { task: 'Take test' },
         ],
         start_date: '2021-06-1',
         todo_labels: ['completed', 'successful', 'waiting for result'],
@@ -65,6 +63,12 @@ const ListState = props => {
   };
 
   //edit task
+  const editTodoItem = todoItem => {
+    dispatch({
+      type: EDIT_TO_DO,
+      payload: todoItem,
+    });
+  };
 
   const [state, dispatch] = useReducer(listReducer, initialState);
   return (
@@ -73,6 +77,7 @@ const ListState = props => {
         list: state.list,
         addTodoItem,
         deleteToDoItem,
+        editTodoItem,
       }}
     >
       {props.children}
