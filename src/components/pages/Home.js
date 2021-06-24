@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
-      <div className='btn-tooltip-div float-right'>
-        <div className='tooltip text-reg float-right'>Add new task</div>
+      <div className='btn-tooltip-div'>
         {/* this button must route to a new form */}
         <Link to='/addTodo'>
-          <button className='add-btn btn my-2 p-1 float-right'>+</button>
+          <button className='add-btn btn my-2 p-1'>+</button>
         </Link>
       </div>
       <div className='sub-container'>

@@ -12,7 +12,7 @@ const TodoList = () => {
           {list.length > 0 &&
             list.map(item => (
               <li key={item.id}>
-                <TodoListItem item={item} />
+                <TodoListItem item={item} parentID={item.id} />
               </li>
             ))}
         </div>

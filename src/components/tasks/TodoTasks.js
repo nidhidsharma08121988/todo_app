@@ -6,7 +6,6 @@ const TodoTasks = ({ task = '' }) => {
 };
 
 TodoTasks.propTypes = {
-  id: PropTypes.number.isRequired,
   task: PropTypes.string,
 };
 

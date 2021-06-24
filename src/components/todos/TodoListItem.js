@@ -5,11 +5,12 @@ import TodoTasks from '../tasks/TodoTasks';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const TodoListItem = ({ item }) => {
+const TodoListItem = ({ item, parentID }) => {
   const { id, todo_title, todo, start_date, todo_labels } = item;
   const listContext = useContext(ListContext);
   const { deleteToDoItem } = listContext;
   const alertContext = useContext(AlertContext);
+  let keyCount = parentID * (Math.random() * 100 + 1);
   const { setAlert } = alertContext;
   // when delete is clicked
   const deleteThisItem = () => {
@@ -42,11 +43,14 @@ const TodoListItem = ({ item }) => {
         <div className='content'>
           <ul className='sub-tasks'>
             {todo.length > 0 &&
-              todo.map(task => (
-                <li>
-                  <TodoTasks task={task.task} />
-                </li>
-              ))}
+              todo.map(task => {
+                keyCount += 1;
+                return (
+                  <li key={keyCount}>
+                    <TodoTasks task={task.task} />
+                  </li>
+                );
+              })}
           </ul>
         </div>
         <div className='dates flex-col bl m-1 p-1 my-1'>

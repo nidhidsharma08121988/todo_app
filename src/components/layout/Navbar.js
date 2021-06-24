@@ -7,16 +7,17 @@ const Navbar = ({ title = 'ToDo' }) => {
     <nav className='navbar p-1'>
       <div className='left-navbar text-xl'>
         <div className='p-1'>
-          <i class='fa fa-book'></i>
+          <i className='fa fa-book'></i>
         </div>
         <div className='p-1'>{title}</div>
       </div>
-      <div className='right-navbar'>
-        <ul className='m-1 text-reg'>
-          <li className='p-1'>
+      <div className='right-navbar menu-container m-1'>
+        <i className='fa fa-bars menu-btn text-l' />
+        <ul className='menu m-1 text-reg'>
+          <li className='menu-list p-1'>
             <Link to='/'>Home</Link>
           </li>
-          <li className='p-1'>
+          <li className='menu-list p-1'>
             <Link to='/about'>About us</Link>
           </li>
         </ul>
@@ -27,6 +28,9 @@ const Navbar = ({ title = 'ToDo' }) => {
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
+};
+Navbar.defaultProps = {
+  title: 'Todo',
 };
 
 export default Navbar;

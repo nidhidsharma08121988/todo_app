@@ -103,7 +103,7 @@ const AddTodoForm = () => {
               id='todoTitle'
               type='text'
               className='text-l input'
-              placeholder='Enter title'
+              placeholder='Enter title...'
               name='todoTitle'
               value={todoTitle}
               onChange={onChange}
@@ -115,7 +115,7 @@ const AddTodoForm = () => {
             <textarea
               id='todoList'
               className='input'
-              placeholder='Enter tasks in comma separated list'
+              placeholder='Enter tasks in comma separated list...'
               name='todoList'
               value={todoList}
               onChange={onChange}
@@ -128,7 +128,7 @@ const AddTodoForm = () => {
             name='todo_labels'
             id='todo_labels'
             value={labels}
-            placeholder='Enter labels beginning with #'
+            placeholder='Enter labels beginning with #...'
             onChange={onChange}
           />
         </div>
