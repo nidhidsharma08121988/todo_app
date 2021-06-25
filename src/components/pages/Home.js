@@ -7,7 +7,9 @@ const Home = () => {
       <div className='btn-tooltip-div'>
         {/* this button must route to a new form */}
         <Link to='/addTodo'>
-          <button className='add-btn btn my-2 p-1'>+</button>
+          <button className='add-btn btn my-2 p-1'>
+            + <span className='add-btn-hover'>Add Task</span>
+          </button>
         </Link>
       </div>
       <div className='sub-container'>
