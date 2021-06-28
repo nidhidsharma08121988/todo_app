@@ -4,13 +4,12 @@ import AlertContext from '../../context/alert/alertContext';
 import TodoTasks from '../tasks/TodoTasks';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+import { v4 } from 'uuid';
 const TodoListItem = ({ item, parentID }) => {
   const { id, todo_title, todo, start_date, todo_labels } = item;
   const listContext = useContext(ListContext);
   const { deleteToDoItem } = listContext;
   const alertContext = useContext(AlertContext);
-  let keyCount = parentID * (Math.random() * 100 + 1);
   const { setAlert } = alertContext;
   // when delete is clicked
   const deleteThisItem = () => {
@@ -44,9 +43,9 @@ const TodoListItem = ({ item, parentID }) => {
           <ul className='sub-tasks'>
             {todo.length > 0 &&
               todo.map(task => {
-                keyCount += 1;
+                let id = v4();
                 return (
-                  <li key={keyCount}>
+                  <li key={id}>
                     <TodoTasks task={task.task} />
                   </li>
                 );
@@ -65,9 +64,14 @@ const TodoListItem = ({ item, parentID }) => {
       </div>
       <div className='flex-row'>
         {todo_labels.length > 0 &&
-          todo_labels.map(label => (
-            <span className='lbl-disp badge-light m-1 my-1 p-1'>{label}</span>
-          ))}
+          todo_labels.map(label => {
+            let id = v4();
+            return (
+              <span key={id} className='lbl-disp badge-light m-1 my-1 p-1'>
+                {label}
+              </span>
+            );
+          })}
       </div>
     </div>
   );

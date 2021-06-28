@@ -247,7 +247,7 @@ Link:hover {
 }
 
 .btn:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .bg-light,
@@ -530,7 +530,7 @@ i {
   }
 
   .menu-list:hover {
-    opacity: 0.7;
+    font-weight: 600;
   }
 
   .menu-container::onmouseleave,
@@ -544,6 +544,8 @@ i {
     bottom: 2rem;
     right: 1rem;
   }
+
+  .btn-div:hover,
   .add-btn:hover {
     display: inline-flex;
     width: 150px;
@@ -555,5 +557,6 @@ i {
 
   .add-btn:hover .add-btn-hover {
     display: inline;
+    text-overflow: hidden;
   }
 }
