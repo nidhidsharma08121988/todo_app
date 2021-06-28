@@ -122,7 +122,7 @@ const AddTodoForm = () => {
             />
           </div>
           {/* labels */}
-          <label htmlfor='todo_labels'>Add tags</label>
+          <label htmlFor='todo_labels'>Add tags</label>
           <textarea
             className='input'
             name='todo_labels'

@@ -5,7 +5,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import App from '../App';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 // test what is visible on screen
 describe('App must display properly', () => {
@@ -38,7 +38,31 @@ describe('App must display properly', () => {
 
 // test the user events produce expected results
 describe('Check event interaction', () => {
-  test('Clicking add-btn must open Add form', () => {
-      
+  //check whether clicking that button displays the Add New Task form
+  test('Clicking + button must open Add form', () => {
+    const { getByTestId, getByText } = render(<App />);
+    const myAddBtn = getByTestId('add-btn');
+
+    fireEvent.click(myAddBtn);
+
+    expect(getByText('Add New Task')).toBeTruthy();
+  });
+
+  test('Clicking About us link must display About us page', () => {
+    const { getByText, getAllByText } = render(<App />);
+    const myAboutLink = getByText('About us');
+
+    fireEvent.click(myAboutLink);
+
+    expect(getAllByText('About us').length).toBeGreaterThan(1);
+  });
+
+  test('Clicking the home link must display home page', () => {
+    const { getByText } = render(<App />);
+    const myHomeLink = getByText('Home');
+
+    fireEvent.click(myHomeLink);
+
+    expect(getByText('Things to do')).toBeTruthy();
   });
 });
