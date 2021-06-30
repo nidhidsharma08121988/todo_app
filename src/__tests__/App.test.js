@@ -5,8 +5,9 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import App from '../App';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, cleanup } from '@testing-library/react';
 
+afterEach(cleanup);
 // test what is visible on screen
 describe('App must display properly', () => {
   test('Must match snapshot', () => {
@@ -31,8 +32,8 @@ describe('App must display properly', () => {
   });
 
   test('Must have add button on screen', () => {
-    const { getByTestId } = render(<App />);
-    expect(getByTestId('add-btn')).toBeTruthy();
+    const { queryByTestId } = render(<App />);
+    expect(queryByTestId('add-btn')).toBeTruthy();
   });
 });
 

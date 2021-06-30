@@ -95,7 +95,7 @@ const AddTodoForm = () => {
       <div className='flex-row center'>
         <h2>Add New Task</h2>
       </div>
-      <form onSubmit={submitForm}>
+      <form onSubmit={submitForm} data-testid='add-new-form'>
         <div className='form-controls'>
           <div className='form-control flex-col'>
             <label htmlFor='todoTitle'>Task name</label>
@@ -103,7 +103,7 @@ const AddTodoForm = () => {
               id='todoTitle'
               type='text'
               className='text-l input'
-              placeholder='Enter title...'
+              placeholder='Enter task name...'
               name='todoTitle'
               value={todoTitle}
               onChange={onChange}
