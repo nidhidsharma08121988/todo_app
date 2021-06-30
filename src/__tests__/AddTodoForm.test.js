@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, getByText } from '@testing-library/react';
 import App from '../App';
 
-test('The form must display properly', () => {
+test('The form must take proper input and cancel button must cancel everything', () => {
   const utils = render(<App />);
   const addBtn = utils.getByTestId('add-btn');
   fireEvent.click(addBtn);
@@ -53,4 +53,24 @@ test('The form must display properly', () => {
   //now check that cancel button routes back to the home page
   fireEvent.click(cancelBtn);
   expect(utils.queryByText('Things to do')).toBeTruthy();
+});
+
+test('Submit button', () => {
+  const utils = render(<App />);
+  const addBtn = utils.getByTestId('add-btn');
+  fireEvent.click(addBtn);
+
+  //1. Add Task title
+  const taskName = utils.queryByPlaceholderText('Enter task name...');
+  fireEvent.change(taskName, { target: { value: 'New Task' } });
+
+  //2. Submit button must be present
+  const submitBtn = utils.queryByTestId('submit');
+  expect(submitBtn).toBeTruthy();
+
+  //3. Submit button must route to home and then must display added task on the page
+  fireEvent.click(submitBtn);
+
+  expect(utils.getByText('Things to do')).toBeTruthy();
+  expect(utils.getByText('New Task')).toBeTruthy();
 });

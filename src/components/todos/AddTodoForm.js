@@ -138,6 +138,7 @@ const AddTodoForm = () => {
             className='btn btn-sm btn-dark light-smooth'
             type='submit'
             value='Add Task'
+            data-testid='submit'
           />
           <Link to='/'>
             <button className='btn btn-sm btn-danger light-smooth'>
