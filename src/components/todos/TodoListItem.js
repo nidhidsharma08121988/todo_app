@@ -26,7 +26,10 @@ const TodoListItem = ({ item, parentID }) => {
         </div>
         <div className='ctr-btn'>
           <Link to={`/editTodo/${item.id}`}>
-            <button className='btn btn-sm btn-dark my-1 py-1 light-smooth'>
+            <button
+              data-testid='editBtn'
+              className='btn btn-sm btn-dark my-1 py-1 light-smooth'
+            >
               <i className='fa fa-edit' />
             </button>
           </Link>

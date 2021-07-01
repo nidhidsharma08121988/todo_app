@@ -119,6 +119,7 @@ exports[`App must display properly Must match snapshot 1`] = `
                         >
                           <button
                             class="btn btn-sm btn-dark my-1 py-1 light-smooth"
+                            data-testid="editBtn"
                           >
                             <i
                               class="fa fa-edit"
@@ -231,6 +232,7 @@ exports[`App must display properly Must match snapshot 1`] = `
                         >
                           <button
                             class="btn btn-sm btn-dark my-1 py-1 light-smooth"
+                            data-testid="editBtn"
                           >
                             <i
                               class="fa fa-edit"
@@ -336,6 +338,7 @@ exports[`App must display properly Must match snapshot 1`] = `
                         >
                           <button
                             class="btn btn-sm btn-dark my-1 py-1 light-smooth"
+                            data-testid="editBtn"
                           >
                             <i
                               class="fa fa-edit"
