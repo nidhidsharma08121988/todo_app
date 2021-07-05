@@ -14,7 +14,7 @@ function App() {
     <ListState>
       <AlertState>
         <Router>
-          <div className='App'>
+          <div>
             <Navbar />
             <Alert />
             <div className='container py-container'>

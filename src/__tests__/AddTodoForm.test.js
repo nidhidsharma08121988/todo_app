@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, getByText } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import App from '../App';
 
 test('The form must take proper input and cancel button must cancel everything', () => {
@@ -57,6 +57,7 @@ test('The form must take proper input and cancel button must cancel everything',
 
 test('Submit button', () => {
   const utils = render(<App />);
+
   const addBtn = utils.getByTestId('add-btn');
   fireEvent.click(addBtn);
 
@@ -65,7 +66,7 @@ test('Submit button', () => {
   fireEvent.change(taskName, { target: { value: 'New Task' } });
 
   //2. Submit button must be present
-  const submitBtn = utils.queryByTestId('submit');
+  const submitBtn = utils.queryByRole('button', { name: /add task/i });
   expect(submitBtn).toBeTruthy();
 
   //3. Submit button must route to home and then must display added task on the page

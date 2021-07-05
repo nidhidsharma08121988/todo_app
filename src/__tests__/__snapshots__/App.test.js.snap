@@ -2,9 +2,7 @@
 
 exports[`App must display properly Must match snapshot 1`] = `
 <div>
-  <div
-    class="App"
-  >
+  <div>
     <nav
       class="navbar p-1"
     >
